@@ -52,16 +52,27 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-" For auto copy-past on clipboard
+" For auto copy-paste on clipboard
 set clipboard=unnamedplus
 
 set autoindent
 set number
 
-"For nodejs
+" For moving between windows
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
+
+" Disable backup and swap files
+" set nobackup
+" set nowritebackup
+" set noswapfile
+
+" For nodejs
 au BufNewFile,BufRead *.handlebars set filetype=html
 
-"Folding in Vim
+" Folding in Vim
 set foldmethod=syntax
 set foldlevelstart=1
 
@@ -73,3 +84,15 @@ let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
+
+" Enable python-mode
+" Pathogen load
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
