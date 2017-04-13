@@ -72,7 +72,9 @@ map <c-l> <c-w>l
 " For nodejs
 au BufNewFile,BufRead *.handlebars set filetype=html
 
-" Folding in Vim
+"------------------------------------
+"********* Folding SETTINGS *********
+"------------------------------------
 set foldmethod=syntax
 set foldlevelstart=1
 
@@ -85,7 +87,9 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
-" Enable python-mode
+"------------------------------------
+"******* Python-mode SETTINGS *******
+"------------------------------------
 " Pathogen load
 filetype off
 
@@ -96,3 +100,15 @@ filetype plugin indent on
 syntax on
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope = 0
+
+"------------------------------------
+" ******** NERDTree SETTINGS ********
+"------------------------------------
+" For auto open NERDTree
+" autocmd vimenter * NERDTree
+
+" For map open NERDTree with Ctrl+n
+map <C-n> :NERDTreeToggle<CR>
+
+" For close NERDTree window automatic
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
