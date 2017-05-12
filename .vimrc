@@ -112,3 +112,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 " For close NERDTree window automatic
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" For YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_filepath_completion_use_working_dir=1
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+let g:ycm_filetype_blacklist={'python': 1}
