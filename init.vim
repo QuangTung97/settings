@@ -131,3 +131,10 @@ let g:fzf_action = {
 "*********** For Prolog ************
 "-----------------------------------
 au FileType perl set filetype=prolog
+
+set background = "dark"
+imap jk <Esc>
+imap Jk <Esc>
+imap kj <Esc>
+imap Kj <Esc>
+imap KJ <Esc>
