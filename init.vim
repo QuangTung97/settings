@@ -1,8 +1,3 @@
-"**** For use vim settings *******
-"set runtimepath^=~/.vim runtimepath+=~/.vim/after
-"let &packpath = &runtimepath
-"source ~/.vimrc
-
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
@@ -10,6 +5,9 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -48,14 +46,6 @@ map <c-l> <c-w>l
 
 
 "------------------------------------
-"** Disable backup and swap files ***
-"------------------------------------
-" set nobackup
-" set nowritebackup
-" set noswapfile
-
-
-"------------------------------------
 "************ For NodeJS ************
 "------------------------------------
 au BufNewFile,BufRead *.handlebars set filetype=html
@@ -77,20 +67,11 @@ let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
 
-"------------------------------------
-"******* Python-mode SETTINGS *******
-"------------------------------------
-" Pathogen load
-" filetype off
-
-" call pathogen#infect()
-" call pathogen#helptags()
-
 filetype plugin indent on
 syntax on
 
-" let g:pymode_rope_lookup_project = 0
-" let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
 
 
 "------------------------------------
@@ -135,6 +116,15 @@ au FileType perl set filetype=prolog
 set background = "dark"
 imap jk <Esc>
 imap Jk <Esc>
+imap jK <Esc>
 imap kj <Esc>
 imap Kj <Esc>
 imap KJ <Esc>
+
+"-----------------------------------
+"*********** For Airline ***********
+"-----------------------------------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'kalisi'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
