@@ -128,3 +128,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'kalisi'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
+
+"-----------------------------------
+"*********** For CMake  ************
+"-----------------------------------
+map <C-b> :make --no-print-directory -C ./build<CR>
+map <C-t> :make --no-print-directory -C ./build test<CR>
+map <C-c> :!count<CR>
