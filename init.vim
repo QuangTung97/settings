@@ -22,6 +22,7 @@ set clipboard=unnamedplus
 "********* Normal Settings **********
 "------------------------------------
 set autoindent
+set relativenumber
 set number
 
 
@@ -125,7 +126,8 @@ imap KJ <Esc>
 "*********** For Airline ***********
 "-----------------------------------
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'kalisi'
+" let g:airline_theme = 'kalisi'
+let g:airline_theme = 'luna'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
@@ -135,3 +137,4 @@ let g:airline_powerline_fonts = 1
 map <C-b> :make --no-print-directory -C ./build<CR>
 map <C-t> :make --no-print-directory -C ./build test<CR>
 map <C-c> :!count<CR>
+map J j
