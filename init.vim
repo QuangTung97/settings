@@ -24,7 +24,6 @@ set clipboard=unnamedplus
 "********* Normal Settings **********
 "------------------------------------
 set autoindent
-set relativenumber
 set number
 
 
@@ -33,10 +32,6 @@ set tabstop=4 " Tab with is 4
 set shiftwidth=4 " Indent will have a width of 4
 set softtabstop=4 " Set the number of columns for a Tab
 set expandtab " Expand Tabs to spaces
-
-autocmd Filetype elm setlocal tabstop=2
-autocmd Filetype elm setlocal shiftwidth=2
-autocmd Filetype elm setlocal softtabstop=2
 
 autocmd Filetype css setlocal tabstop=2
 autocmd Filetype css setlocal shiftwidth=2
