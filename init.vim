@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
 Plug 'elmcast/elm-vim'
+Plug 'jvoorhis/coq.vim'
 
 call plug#end()
 

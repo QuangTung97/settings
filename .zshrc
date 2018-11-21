@@ -72,5 +72,5 @@ stty ixoff -ixon
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # For Coq
-export OPAMROOT=~/opam-coq.8.8.2
+export OPAMROOT=~/.local/opam-coq.8.8.2
 eval `opam config env`
