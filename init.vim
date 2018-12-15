@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
 Plug 'elmcast/elm-vim'
 Plug 'jvoorhis/coq.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -143,3 +144,30 @@ let g:airline_powerline_fonts = 1
 
 " No accidentally pressing the captial J
 map J j
+
+" Test disable Ctrl X
+map <C-x> l
+
+" cd, CD in NerdTree
+set ma
+
+" make, build/make, build/make test
+map <F5> :!make<CR>
+map <F6> :!make test<CR>
+map <F7> :!cd ./build/ && make ; cd ..<CR>
+map <F8> :!cd ./build/ && make test ; cd ..<CR>
+
+function MakeNormal() 
+    :map <F1> <F5>
+    :map <F2> <F6>
+endfunction
+
+function MakeBuild() 
+    :map <F1> <F7>
+    :map <F2> <F8>
+endfunction
+
+map <F3> :call MakeNormal()<CR>
+map <F4> :call MakeBuild()<CR>
+
+call MakeNormal()
