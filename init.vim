@@ -136,14 +136,14 @@ imap KJ <Esc>
 "-----------------------------------
 "*********** For Airline ***********
 "-----------------------------------
-let g:airline#extensions#tabline#enabled = 1
-" let g:airline_theme = 'kalisi'
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'luna'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
 " No accidentally pressing the captial J
-map J j
+nmap J j
+vmap J j
 
 " Test disable Ctrl X
 map <C-x> l
@@ -152,22 +152,17 @@ map <C-x> l
 set ma
 
 " make, build/make, build/make test
-map <F5> :!make<CR>
-map <F6> :!make test<CR>
-map <F7> :!cd ./build/ && make ; cd ..<CR>
-map <F8> :!cd ./build/ && make test ; cd ..<CR>
-
 function MakeNormal() 
-    :map <F1> <F5>
-    :map <F2> <F6>
+    nmap <F1> :!make<CR>
+    nmap <F2> :!make test<CR>
 endfunction
 
 function MakeBuild() 
-    :map <F1> <F7>
-    :map <F2> <F8>
+    nmap <F1> :!cd ./build/ && make ; cd ..<CR>
+    nmap <F2> :!cd ./build/ && make test ; cd ..<CR>
 endfunction
 
-map <F3> :call MakeNormal()<CR>
-map <F4> :call MakeBuild()<CR>
+nmap <F3> :call MakeNormal()<CR>
+nmap <F4> :call MakeBuild()<CR>
 
 call MakeNormal()
