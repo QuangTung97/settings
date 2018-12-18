@@ -67,7 +67,8 @@ au BufNewFile,BufRead *.handlebars set filetype=html
 "********* Folding SETTINGS *********
 "------------------------------------
 set foldmethod=syntax
-set foldlevelstart=1
+" set foldlevelstart=1
+set foldlevelstart=99
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
