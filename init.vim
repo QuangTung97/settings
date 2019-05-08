@@ -12,6 +12,9 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'elmcast/elm-vim'
 Plug 'jvoorhis/coq.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'https://tpope.io/vim/surround.git'
+Plug 'https://tpope.io/vim/commentary.git'
 
 call plug#end()
 
@@ -39,9 +42,25 @@ autocmd Filetype css setlocal tabstop=2
 autocmd Filetype css setlocal shiftwidth=2
 autocmd Filetype css setlocal softtabstop=2
 
+autocmd Filetype scss setlocal tabstop=2
+autocmd Filetype scss setlocal shiftwidth=2
+autocmd Filetype scss setlocal softtabstop=2
+
+autocmd Filetype sass setlocal tabstop=2
+autocmd Filetype sass setlocal shiftwidth=2
+autocmd Filetype sass setlocal softtabstop=2
+
 autocmd Filetype html setlocal tabstop=2
 autocmd Filetype html setlocal shiftwidth=2
 autocmd Filetype html setlocal softtabstop=2
+
+autocmd Filetype yaml setlocal tabstop=2
+autocmd Filetype yaml setlocal shiftwidth=2
+autocmd Filetype yaml setlocal softtabstop=2
+
+autocmd Filetype javascript setlocal tabstop=2
+autocmd Filetype javascript setlocal shiftwidth=2
+autocmd Filetype javascript setlocal softtabstop=2
 
 
 " Backspace problem
@@ -61,6 +80,7 @@ map <c-l> <c-w>l
 "************ For NodeJS ************
 "------------------------------------
 au BufNewFile,BufRead *.handlebars set filetype=html
+au BufNewFile,BufRead *.ejs set filetype=html
 
 
 "------------------------------------
@@ -145,6 +165,8 @@ let g:airline_powerline_fonts = 1
 " No accidentally pressing the captial J
 nmap J j
 vmap J j
+nmap K k
+vmap K k
 
 " Test disable Ctrl X
 map <C-x> l
@@ -167,3 +189,7 @@ nmap <F3> :call MakeNormal()<CR>
 nmap <F4> :call MakeBuild()<CR>
 
 call MakeNormal()
+imap <F1> <Nop>
+
+" For Rust
+let g:rustfmt_autosave = 1
