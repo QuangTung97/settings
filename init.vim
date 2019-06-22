@@ -15,6 +15,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://tpope.io/vim/commentary.git'
+Plug 'https://github.com/kchmck/vim-coffee-script.git'
 
 call plug#end()
 
@@ -62,6 +63,13 @@ autocmd Filetype javascript setlocal tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2
 autocmd Filetype javascript setlocal softtabstop=2
 
+autocmd Filetype coffee setlocal tabstop=2
+autocmd Filetype coffee setlocal shiftwidth=2
+autocmd Filetype coffee setlocal softtabstop=2
+
+autocmd Filetype lisp setlocal tabstop=4
+autocmd Filetype lisp setlocal shiftwidth=4
+autocmd Filetype lisp setlocal softtabstop=4
 
 " Backspace problem
 set backspace=2
