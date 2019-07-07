@@ -122,7 +122,8 @@ let g:pymode_rope = 0
 " autocmd vimenter * NERDTree
 
 " For map open NERDTree with Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFind<CR>
 
 " For close NERDTree window automatic
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -183,20 +184,13 @@ map <C-x> l
 set ma
 
 " make, build/make, build/make test
-function MakeNormal() 
+function UsingMake() 
     nmap <F1> :!make<CR>
     nmap <F2> :!make test<CR>
+    nmap <F3> :!make format<CR>:e<CR><CR>
 endfunction
 
-function MakeBuild() 
-    nmap <F1> :!cd ./build/ && make ; cd ..<CR>
-    nmap <F2> :!cd ./build/ && make test ; cd ..<CR>
-endfunction
-
-nmap <F3> :call MakeNormal()<CR>
-nmap <F4> :call MakeBuild()<CR>
-
-call MakeNormal()
+call UsingMake()
 imap <F1> <Nop>
 
 " For Rust
