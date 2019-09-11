@@ -7,15 +7,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
 Plug 'elixir-editors/vim-elixir'
-Plug 'elmcast/elm-vim'
 Plug 'jvoorhis/coq.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://tpope.io/vim/commentary.git'
-Plug 'https://github.com/kchmck/vim-coffee-script.git'
+Plug 'https://github.com/rhysd/vim-wasm.git'
+Plug 'https://github.com/pangloss/vim-javascript.git'
 
 call plug#end()
 
@@ -55,6 +54,10 @@ autocmd Filetype html setlocal tabstop=2
 autocmd Filetype html setlocal shiftwidth=2
 autocmd Filetype html setlocal softtabstop=2
 
+autocmd Filetype xml setlocal tabstop=2
+autocmd Filetype xml setlocal shiftwidth=2
+autocmd Filetype xml setlocal softtabstop=2
+
 autocmd Filetype yaml setlocal tabstop=2
 autocmd Filetype yaml setlocal shiftwidth=2
 autocmd Filetype yaml setlocal softtabstop=2
@@ -62,10 +65,6 @@ autocmd Filetype yaml setlocal softtabstop=2
 autocmd Filetype javascript setlocal tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2
 autocmd Filetype javascript setlocal softtabstop=2
-
-autocmd Filetype coffee setlocal tabstop=2
-autocmd Filetype coffee setlocal shiftwidth=2
-autocmd Filetype coffee setlocal softtabstop=2
 
 autocmd Filetype lisp setlocal tabstop=4
 autocmd Filetype lisp setlocal shiftwidth=4
@@ -122,8 +121,8 @@ let g:pymode_rope = 0
 " autocmd vimenter * NERDTree
 
 " For map open NERDTree with Ctrl+n
-" map <C-n> :NERDTreeToggle<CR>
-map <C-n> :NERDTreeFind<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
 
 " For close NERDTree window automatic
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -188,10 +187,14 @@ function UsingMake()
     nmap <F1> :!make<CR>
     nmap <F2> :!make test<CR>
     nmap <F3> :!make format<CR>:e<CR><CR>
+    nmap <F4> :!make release<CR>
 endfunction
 
 call UsingMake()
 imap <F1> <Nop>
+imap <F2> <Nop>
+imap <F3> <Nop>
+imap <F4> <Nop>
 
 " For Rust
 let g:rustfmt_autosave = 1
