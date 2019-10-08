@@ -1,10 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer'}
+Plug 'Valloric/YouCompleteMe'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'elixir-editors/vim-elixir'
@@ -15,6 +14,7 @@ Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://tpope.io/vim/commentary.git'
 Plug 'https://github.com/rhysd/vim-wasm.git'
 Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
@@ -123,6 +123,7 @@ let g:pymode_rope = 0
 " For map open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFind<CR>
+nmap <CR> j
 
 " For close NERDTree window automatic
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -131,11 +132,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "-----------------------------------
 "******* For YouCompleteMe *********
 "-----------------------------------
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
-let g:ycm_filepath_completion_use_working_dir=1
-let g:ycm_confirm_extra_conf=0
+" let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
+" let g:ycm_filepath_completion_use_working_dir=1
+" let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
-let g:ycm_filetype_blacklist={'python': 1}
 
 
 "-----------------------------------
