@@ -1,13 +1,12 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'elixir-editors/vim-elixir'
-" Plug 'slashmili/alchemist.vim'
 Plug 'jvoorhis/coq.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-ruby/vim-ruby'
@@ -16,7 +15,6 @@ Plug 'https://tpope.io/vim/commentary.git'
 Plug 'https://github.com/rhysd/vim-wasm.git'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'udalov/kotlin-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -86,42 +84,19 @@ map <c-l> <c-w>l
 
 
 "------------------------------------
-"************ For NodeJS ************
-"------------------------------------
-au BufNewFile,BufRead *.handlebars set filetype=html
-au BufNewFile,BufRead *.ejs set filetype=html
-
-
-"------------------------------------
 "********* Folding SETTINGS *********
 "------------------------------------
 set foldmethod=syntax
 " set foldlevelstart=1
 set foldlevelstart=99
 
-let javaScript_fold=1         " JavaScript
-let perl_fold=1               " Perl
-let php_folding=1             " PHP
-let r_syntax_folding=1        " R
-let ruby_fold=1               " Ruby
-let sh_fold_enabled=1         " sh
-let vimsyn_folding='af'       " Vim script
-let xml_syntax_folding=1      " XML
-
-
 filetype plugin indent on
 syntax on
-
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope = 0
 
 
 "------------------------------------
 " ******** NERDTree SETTINGS ********
 "------------------------------------
-" For auto open NERDTree
-" autocmd vimenter * NERDTree
-
 " For map open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFind<CR>
@@ -130,14 +105,28 @@ nmap <CR> j
 " For close NERDTree window automatic
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" cd, CD in NerdTree
+set ma
+
 
 "-----------------------------------
-"******* For YouCompleteMe *********
+"************ For CoC **************
 "-----------------------------------
-" let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
-" let g:ycm_filepath_completion_use_working_dir=1
-" let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+let g:coc_snippet_next = '<tab>'
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 
 "-----------------------------------
@@ -180,9 +169,6 @@ vmap K k
 
 " Test disable Ctrl X
 map <C-x> l
-
-" cd, CD in NerdTree
-set ma
 
 " make, build/make, build/make test
 function UsingMake() 
