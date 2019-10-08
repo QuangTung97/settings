@@ -7,6 +7,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'elixir-editors/vim-elixir'
+" Plug 'slashmili/alchemist.vim'
 Plug 'jvoorhis/coq.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-ruby/vim-ruby'
@@ -15,6 +16,7 @@ Plug 'https://tpope.io/vim/commentary.git'
 Plug 'https://github.com/rhysd/vim-wasm.git'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'udalov/kotlin-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
