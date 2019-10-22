@@ -13,8 +13,11 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://tpope.io/vim/commentary.git'
 Plug 'https://github.com/rhysd/vim-wasm.git'
-Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'udalov/kotlin-vim'
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+Plug 'elmcast/elm-vim'
 
 call plug#end()
 
@@ -38,37 +41,20 @@ set shiftwidth=4 " Indent will have a width of 4
 set softtabstop=4 " Set the number of columns for a Tab
 set expandtab " Expand Tabs to spaces
 
-autocmd Filetype css setlocal tabstop=2
-autocmd Filetype css setlocal shiftwidth=2
-autocmd Filetype css setlocal softtabstop=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype scss setlocal ts=2 sts=2 sw=2
+autocmd Filetype sass setlocal ts=2 sts=2 sw=2
 
-autocmd Filetype scss setlocal tabstop=2
-autocmd Filetype scss setlocal shiftwidth=2
-autocmd Filetype scss setlocal softtabstop=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype xml setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 
-autocmd Filetype sass setlocal tabstop=2
-autocmd Filetype sass setlocal shiftwidth=2
-autocmd Filetype sass setlocal softtabstop=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
 
-autocmd Filetype html setlocal tabstop=2
-autocmd Filetype html setlocal shiftwidth=2
-autocmd Filetype html setlocal softtabstop=2
+autocmd Filetype lisp setlocal ts=4 sts=4 sw=4
 
-autocmd Filetype xml setlocal tabstop=2
-autocmd Filetype xml setlocal shiftwidth=2
-autocmd Filetype xml setlocal softtabstop=2
-
-autocmd Filetype yaml setlocal tabstop=2
-autocmd Filetype yaml setlocal shiftwidth=2
-autocmd Filetype yaml setlocal softtabstop=2
-
-autocmd Filetype javascript setlocal tabstop=2
-autocmd Filetype javascript setlocal shiftwidth=2
-autocmd Filetype javascript setlocal softtabstop=2
-
-autocmd Filetype lisp setlocal tabstop=4
-autocmd Filetype lisp setlocal shiftwidth=4
-autocmd Filetype lisp setlocal softtabstop=4
+autocmd Filetype elm setlocal ts=4 sts=4 sw=4
 
 " Backspace problem
 set backspace=2
@@ -115,7 +101,6 @@ set ma
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
   let col = col('.') - 1
