@@ -17,7 +17,15 @@
       "initializationOptions": {
         "elmAnalyseTrigger": "change"
       }
+    },
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "disableWorkspaceFolders": true,
+      "filetypes": ["go"]
     }
-  }
+  },
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": ["go"]
 }
 
