@@ -3,17 +3,15 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'elixir-editors/vim-elixir'
-Plug 'jvoorhis/coq.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'vim-ruby/vim-ruby'
 Plug 'https://tpope.io/vim/surround.git'
 Plug 'https://tpope.io/vim/commentary.git'
 Plug 'https://github.com/rhysd/vim-wasm.git'
-Plug 'udalov/kotlin-vim'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'leafgarland/typescript-vim'
 Plug 'ianks/vim-tsx'
@@ -84,8 +82,7 @@ syntax on
 " ******** NERDTree SETTINGS ********
 "------------------------------------
 " For map open NERDTree with Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
+nmap <C-n> :NERDTreeToggle<CR>
 nmap <CR> j
 
 " For close NERDTree window automatic
@@ -232,18 +229,19 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "-----------------------------------
 "******* For Fuzzy Finder  *********
 "-----------------------------------
-set rtp+=~/.fzf
-map <C-f> :FZF<CR>
+" set rtp+=~/.fzf
+" map <C-f> :FZF<CR>
+nmap <C-f> :Files<CR>
+nmap <C-g> :Rg<CR>
+nmap <C-b> :Buffers<CR>
+nmap <C-m> :Buffers<CR>
+nmap <C-w> :Windows<CR>
+
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
-
-"-----------------------------------
-"*********** For Prolog ************
-"-----------------------------------
-au FileType perl set filetype=prolog
 
 set background = "dark"
 imap jk <Esc>
@@ -285,7 +283,14 @@ imap <F3> <Nop>
 imap <F4> <Nop>
 
 set cmdheight=1
-highlight Pmenu ctermbg=232 ctermfg=White
+highlight Pmenu ctermbg=234 ctermfg=White
 
 " For Rust
 let g:rustfmt_autosave = 1
+
+nmap <c-i> :Format<CR>
+autocmd Filetype javascript nmap <c-i> :CocCommand eslint.executeAutofix .<CR>
+
+nmap <CR> j
+
+" nmap <C-m> :NERDTreeFind<CR>
