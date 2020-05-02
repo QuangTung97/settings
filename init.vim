@@ -234,8 +234,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 nmap <C-f> :Files<CR>
 nmap <C-g> :Rg<CR>
 nmap <C-b> :Buffers<CR>
-nmap <C-m> :Buffers<CR>
-nmap <C-w> :Windows<CR>
 
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -262,8 +260,10 @@ let g:airline_powerline_fonts = 1
 " No accidentally pressing the captial J
 nmap J j
 vmap J j
-" nmap K k
-" vmap K k
+nmap H {
+vmap H {
+nmap L }
+vmap L }
 
 " Test disable Ctrl X
 map <C-x> l
@@ -294,3 +294,5 @@ autocmd Filetype javascript nmap <c-i> :CocCommand eslint.executeAutofix .<CR>
 nmap <CR> j
 
 " nmap <C-m> :NERDTreeFind<CR>
+nmap <C-m> :Windows<CR>
+nnoremap <C-k> :noh<CR>
