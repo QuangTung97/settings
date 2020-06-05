@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -54,6 +54,8 @@ autocmd Filetype lisp setlocal ts=4 sts=4 sw=4
 
 autocmd Filetype elm setlocal ts=4 sts=4 sw=4
 
+autocmd Filetype proto setlocal ts=2 sts=2 sw=2
+
 " Backspace problem
 set backspace=2
 
@@ -61,10 +63,8 @@ set backspace=2
 "------------------------------------
 "**** For moving between windows ****
 "------------------------------------
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-h> <c-w>h
-map <c-l> <c-w>l
+nmap <c-h> <c-w>h
+nmap <c-l> <c-w>l
 
 
 "------------------------------------
@@ -83,7 +83,6 @@ syntax on
 "------------------------------------
 " For map open NERDTree with Ctrl+n
 nmap <C-n> :NERDTreeToggle<CR>
-nmap <CR> j
 
 " For close NERDTree window automatic
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -229,8 +228,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "-----------------------------------
 "******* For Fuzzy Finder  *********
 "-----------------------------------
-" set rtp+=~/.fzf
-" map <C-f> :FZF<CR>
+" set rtp+=/usr/bin/fzf
 nmap <C-f> :Files<CR>
 nmap <C-g> :Rg<CR>
 nmap <C-b> :Buffers<CR>
@@ -242,12 +240,13 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 set background = "dark"
-imap jk <Esc>
-imap Jk <Esc>
-imap jK <Esc>
-imap kj <Esc>
-imap Kj <Esc>
-imap KJ <Esc>
+
+" imap jk <Esc>
+" imap Jk <Esc>
+" imap jK <Esc>
+" imap kj <Esc>
+" imap Kj <Esc>
+" imap KJ <Esc>
 
 "-----------------------------------
 "*********** For Airline ***********
@@ -291,8 +290,5 @@ let g:rustfmt_autosave = 1
 nmap <c-i> :Format<CR>
 autocmd Filetype javascript nmap <c-i> :CocCommand eslint.executeAutofix .<CR>
 
-nmap <CR> j
-
-" nmap <C-m> :NERDTreeFind<CR>
-nmap <C-m> :Windows<CR>
-nnoremap <C-k> :noh<CR>
+" nmap <C-n> :NERDTreeFind<CR>
+nmap <C-k> :noh<CR>
