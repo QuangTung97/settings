@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/vim-latex/vim-latex.git'
-Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -55,6 +55,8 @@ autocmd Filetype lisp setlocal ts=4 sts=4 sw=4
 autocmd Filetype elm setlocal ts=4 sts=4 sw=4
 
 autocmd Filetype proto setlocal ts=2 sts=2 sw=2
+
+autocmd Filetype json setlocal ts=2 sts=2 sw=2
 
 " Backspace problem
 set backspace=2
@@ -221,7 +223,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 "-----------------------------------
 "******* For Fuzzy Finder  *********
 "-----------------------------------
-" set rtp+=/usr/bin/fzf
+" set rtp+=/home/teko/.fzf/bin/fzf
 nmap <C-f> :Files<CR>
 nmap <C-g> :Rg<CR>
 nmap <C-b> :Buffers<CR>
@@ -250,7 +252,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
 " No accidentally pressing the captial J
-nmap J j
 vmap J j
 nmap H {
 vmap H {
@@ -264,7 +265,7 @@ map <C-x> l
 function UsingMake() 
     nmap <F1> :!make<CR>
     nmap <F2> :!make test<CR>
-    nmap <F3> :!make format<CR>:e<CR><CR>
+    nmap <F3> :!make lint<CR>:e<CR><CR>
     nmap <F4> :!make release<CR>
 endfunction
 
@@ -275,7 +276,7 @@ imap <F3> <Nop>
 imap <F4> <Nop>
 
 set cmdheight=1
-highlight Pmenu ctermbg=234 ctermfg=White
+highlight Pmenu ctermbg=235 ctermfg=White
 
 " For Rust
 let g:rustfmt_autosave = 1
@@ -285,3 +286,5 @@ autocmd Filetype javascript nmap <c-i> :CocCommand eslint.executeAutofix .<CR>
 
 " nmap <C-n> :NERDTreeFind<CR>
 nmap <C-k> :noh<CR>
+
+nmap <F5> :CocRestart<CR>
