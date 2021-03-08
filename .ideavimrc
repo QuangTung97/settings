@@ -1,0 +1,19 @@
+set clipboard+=unnamed
+
+nnoremap <space>g :action FindInPath<CR>
+nnoremap <space>s :action FileStructurePopup<CR>
+nnoremap <space>a :action FileStructurePopup<CR>
+
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+nnoremap gr :action FindUsages<CR>
+
+nnoremap R :action RenameElement<CR>
+nnoremap :w :action ReformatCode<CR>
+
+nnoremap gc :action CommentByLineComment<CR>
+vnoremap gc :action CommentByLineComment<CR>
+
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
